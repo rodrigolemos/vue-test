@@ -1,39 +1,42 @@
 <template>
   <div class="hello">
-    <custom-header>Sorteio Intergrall</custom-header>
-    <div v-if="!raffle.length">
-      <custom-form-group>
+    <custom-header>Teste - Sorteio Simples</custom-header>
+    <custom-div>
+
+      <custom-group v-if="!winners.length">
         <label>
           Sortear <custom-input v-model="qtd" />
           número(s) entre <custom-input v-model="min" />
-          e <custom-input v-model="max"/>
+          e <custom-input v-model="max" />
         </label>
         <custom-button @click="create">Sortear</custom-button>
-      </custom-form-group>
-    </div>
+      </custom-group>
 
-    <div v-else>
-      <custom-form-group>
+      <custom-group v-else>
+        <custom-span>Parabéns aos vencedores!</custom-span>
         <custom-list>
-          <li v-for="drawn in raffle" :key="drawn">{{ drawn }}</li>
+          <li v-for="drawn in winners" :key="drawn">{{ drawn }}</li>
         </custom-list>
-        <custom-button @click="clear">Novo Sorteio</custom-button>
-      </custom-form-group>
-    </div>
+        <custom-button @click="clear">Novo</custom-button>
+      </custom-group>
+
+    </custom-div>
 
   </div>
 </template>
 
 <script>
 import { CustomHeader } from '../styled-components/Header'
-import { CustomFormGroup, CustomInput, CustomButton, CustomList } from '../styled-components/Form'
+import { CustomDiv, CustomGroup, CustomInput, CustomSpan, CustomButton, CustomList } from '../styled-components/Form'
 
 export default {
   name: 'Main',
   components: {
     CustomHeader,
-    CustomFormGroup,
+    CustomDiv,
+    CustomGroup,
     CustomInput,
+    CustomSpan,
     CustomButton,
     CustomList
   },
@@ -42,26 +45,25 @@ export default {
       qtd: 1,
       min: 1,
       max: 10,
-      raffle: []
+      winners: []
     }
   },
   methods: {
     create() {
       for (let index = 0; index < this.qtd; index++) {
 
-        let newDrawn = this.getRandomInt(this.min, this.max);
-        
-        if (this.raffle.includes(newDrawn)) {
-          // this.clear();
-          this.create();
-        } else {
-          this.raffle.push( newDrawn );
+        let newWinner = this.getRandomInt(this.min, this.max);
+
+        if (this.winners.includes(newWinner)) {
+          newWinner = this.getRandomInt(this.min, this.max);
         }
+
+        this.winners.push(newWinner);
 
       }
     },
     clear() {
-      this.raffle = [];
+      this.winners = [];
     },
     getRandomInt(min, max) {
       min = Math.ceil(min);
@@ -75,4 +77,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+  .hello {
+    display: flex;
+    flex-direction: column;
+  }
 </style>
