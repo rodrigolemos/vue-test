@@ -1,4 +1,4 @@
-# vue-raffle
+# vue-test
 
 ## Project motivation
 Create a simple app using [Vue.js Framework](https://vuejs.org/) and [styled-components](https://github.com/styled-components/vue-styled-components) to identify differences between React usage.
