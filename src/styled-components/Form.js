@@ -3,7 +3,7 @@ import styled, { keyframes } from 'vue-styled-components';
 const showFromLeft = keyframes`
   0% {
     opacity: 0;
-    transform: translateX(50%);
+    transform: translateX(20%);
   }
   100% {
     opacity: 1;
@@ -22,8 +22,28 @@ const showFromRight = keyframes`
   }
 `;
 
+export const CustomDisclaimer = styled.div`
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #EEE;
+  font-size: 1.2rem;
+  display: none;
+  
+  @media(max-width: 800px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  span {
+    animation: .5s ${showFromLeft} ease-in-out;
+  }
+`;
+
 export const CustomDiv = styled.div`
   font-family: 'Source Sans Pro', sans-serif;
+  margin-top: 100px;
   color: #EEE;
   font-size: 1.4rem;
   margin-bottom: 20px;
@@ -32,35 +52,36 @@ export const CustomDiv = styled.div`
   justify-content: space-around;
   border: none;
   border-radius: 25px;
-  width: 75vw;
-  height: 125px;
+  width: 70vw;
+  min-height: 400px;
   background-image: linear-gradient(to right, #4F5A7C, #485373);
   box-shadow: 5px 10px 20px #363E58;
   color: #EEE;
 
   label {
+    margin: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 70%;
     animation: .5s ${showFromRight} ease-in-out;
   }
+
+  button {
+    margin: 30px;
+  }
+
+  @media(max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const CustomGroup = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: space-between;
   width: 100%;
-`;
-
-export const CustomSpan = styled.span`
-  font-size: 1.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  margin-left: 20px;
 `;
 
 export const CustomInput = styled.input`
@@ -90,6 +111,7 @@ export const CustomButton = styled.button`
 `;
 
 export const CustomList = styled.ul`
+  padding: 0 !important;
   display: flex;
   justify-content: center;
   width: 70%;
@@ -99,8 +121,7 @@ export const CustomList = styled.ul`
   li {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 0 50px;
+    justify-content: space-around;
     background: #6A7595;
     color: #EEE;
     font-size: 2.1rem;

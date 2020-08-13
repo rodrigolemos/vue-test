@@ -1,6 +1,12 @@
 <template>
-  <div class="hello">
-    <custom-header>Teste - Sorteio Simples</custom-header>
+  <div class="main">
+    
+    <custom-disclaimer>
+      <span>Versão mobile em desenvolvimento ;)</span>
+    </custom-disclaimer>
+    
+    <custom-header>Sorteio Simples</custom-header>
+
     <custom-div>
 
       <custom-group v-if="!winners.length">
@@ -13,11 +19,11 @@
       </custom-group>
 
       <custom-group v-else>
-        <custom-span>Parabéns aos vencedores!</custom-span>
+        <label>Parabéns aos vencedores!</label>
         <custom-list>
           <li v-for="drawn in winners" :key="drawn">{{ drawn }}</li>
         </custom-list>
-        <custom-button @click="clear">Novo</custom-button>
+        <custom-button @click="clear">Novo Sorteio</custom-button>
       </custom-group>
 
     </custom-div>
@@ -27,7 +33,14 @@
 
 <script>
 import { CustomHeader } from '../styled-components/Header'
-import { CustomDiv, CustomGroup, CustomInput, CustomSpan, CustomButton, CustomList } from '../styled-components/Form'
+import {
+  CustomDiv,
+  CustomGroup,
+  CustomInput,
+  CustomButton,
+  CustomList,
+  CustomDisclaimer
+} from '../styled-components/Form'
 
 export default {
   name: 'Main',
@@ -36,9 +49,9 @@ export default {
     CustomDiv,
     CustomGroup,
     CustomInput,
-    CustomSpan,
     CustomButton,
-    CustomList
+    CustomList,
+    CustomDisclaimer,
   },
   data: function() {
     return {
@@ -77,7 +90,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
-  .hello {
+  .main {
     display: flex;
     flex-direction: column;
   }
