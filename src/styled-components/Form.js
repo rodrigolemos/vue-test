@@ -27,14 +27,6 @@ export const CustomDisclaimer = styled.div`
   color: #EEE;
   font-size: 1.2rem;
   display: none;
-  
-  @media(max-width: 800px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-  }
 
   span {
     animation: .5s ${showFromLeft} ease-in-out;
@@ -65,6 +57,11 @@ export const CustomDiv = styled.div`
     justify-content: center;
     width: 70%;
     animation: .5s ${showFromRight} ease-in-out;
+
+    @media(max-width: 800px) {
+      font-size: 1.2rem;
+      flex-direction: column;
+    }
   }
 
   button {
@@ -72,7 +69,10 @@ export const CustomDiv = styled.div`
   }
 
   @media(max-width: 800px) {
-    display: none;
+    font-size: 1.2rem;
+    width: 100vw;
+    border-radius: 0px;
+    margin-top: 0px;
   }
 `;
 
@@ -95,6 +95,12 @@ export const CustomInput = styled.input`
   height: 40px;
   border-radius: 10px;
   text-align: center;
+
+  @media(max-width: 800px) {
+    font-size: 1.2rem;
+    width: 90%;
+    margin: 10px;
+  }
 `;
 
 export const CustomButton = styled.button`
@@ -126,7 +132,7 @@ export const CustomList = styled.ul`
     color: #EEE;
     font-size: 2.1rem;
     margin: 0 20px;
-    width: 100px;
+    min-width: 60px;
     height: 60px;
     border-radius: 10px;
     text-align: center;
